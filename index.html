@@ -290,6 +290,275 @@
   
 
   <article class="post post-type-normal " itemscope itemtype="http://schema.org/Article">
+    <link itemprop="mainEntityOfPage" href="http://yoursite.com/2017/04/25/npm/">
+
+    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
+      <meta itemprop="name" content="Corleone">
+      <meta itemprop="description" content="">
+      <meta itemprop="image" content="/images/headimg.jpg">
+    </span>
+
+    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
+      <meta itemprop="name" content="CorleoneX1n">
+    </span>
+
+    
+      <header class="post-header">
+
+        
+        
+          <h1 class="post-title" itemprop="name headline">
+            
+            
+              
+                
+                <a class="post-title-link" href="/2017/04/25/npm/" itemprop="url">
+                  发布自己的npm包到全局仓库
+                </a>
+              
+            
+          </h1>
+        
+
+        <div class="post-meta">
+          <span class="post-time">
+            
+              <span class="post-meta-item-icon">
+                <i class="fa fa-calendar-o"></i>
+              </span>
+              
+                <span class="post-meta-item-text">发表于</span>
+              
+              <time title="创建于" itemprop="dateCreated datePublished" datetime="2017-04-25T00:00:00+08:00">
+                2017-04-25
+              </time>
+            
+
+            
+
+            
+          </span>
+
+          
+
+          
+            
+          
+
+          
+          
+
+          
+
+          
+
+          
+
+        </div>
+      </header>
+    
+
+
+    <div class="post-body" itemprop="articleBody">
+
+      
+      
+
+      
+        
+          
+            <h1 id="发布自己的npm包到全局仓库"><a href="#发布自己的npm包到全局仓库" class="headerlink" title="发布自己的npm包到全局仓库"></a>发布自己的npm包到全局仓库</h1><h3 id="去npm官网注册一个账号"><a href="#去npm官网注册一个账号" class="headerlink" title="去npm官网注册一个账号"></a>去npm官网注册一个账号</h3><p> 传送门： <a href="https://www.npmjs.com/signup" target="_blank" rel="external">https://www.npmjs.com/signup</a></p>
+<h3 id="本地登录账号"><a href="#本地登录账号" class="headerlink" title="本地登录账号"></a>本地登录账号</h3><figure class="highlight python"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div></pre></td><td class="code"><pre><div class="line">$ npm login</div><div class="line"></div><div class="line">Username: xxxxxx</div><div class="line">Password:</div><div class="line">Email: (this IS public) xxx@gmail.com</div><div class="line">Logged <span class="keyword">in</span> <span class="keyword">as</span> falm on https://registry.npmjs.org/.</div></pre></td></tr></table></figure>
+<p>恭喜，登录成功。</p>
+<h3 id="初始化"><a href="#初始化" class="headerlink" title="初始化"></a>初始化</h3><figure class="highlight python"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div></pre></td><td class="code"><pre><div class="line"></div><div class="line">$ mkdir npm-project &amp;&amp; cd npm-project</div><div class="line">$ npm init</div></pre></td></tr></table></figure>
+<p>输入完npm init之后，跟着填写项目信息就可以了。<br><figure class="highlight"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div></pre></td><td class="code"><pre><div class="line">name: npm-project  # 填写包名</div><div class="line">version: (1.0.0)                       # 版本号</div><div class="line">description: a new npm-project # 描述</div><div class="line">entry point: (index.js)      #  入口文件名</div><div class="line">test command:</div><div class="line">git repository: https://github.com/xiatiandenixi/npm-project.git  # git仓库地址</div><div class="line">keywords: keywords    # 关键字</div><div class="line">author: xiatiandenixi  # 作者</div><div class="line">license: (ISC) MIT   # 许可证</div></pre></td></tr></table></figure></p>
+<p>生成的package.json<br><figure class="highlight"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div><div class="line">12</div><div class="line">13</div><div class="line">14</div><div class="line">15</div><div class="line">16</div><div class="line">17</div><div class="line">18</div><div class="line">19</div><div class="line">20</div><div class="line">21</div><div class="line">22</div><div class="line">23</div></pre></td><td class="code"><pre><div class="line"># package.json</div><div class="line">&#123;</div><div class="line">  "name": "npm-project",</div><div class="line">  "version": "1.0.0",</div><div class="line">  "description": "a new npm-project",</div><div class="line">  "main": "index.js",</div><div class="line">  "scripts": &#123;</div><div class="line">    "test": "echo \"Error: no test specified\" &amp;&amp; exit 1"</div><div class="line">  &#125;,</div><div class="line">  "repository": &#123;</div><div class="line">    "type": "git",</div><div class="line">    "url": "git+https://github.com/xiatiandenixi/npm-project.git"</div><div class="line">  &#125;,</div><div class="line">  "keywords": [</div><div class="line">    "keywords"</div><div class="line">  ],</div><div class="line">  "author": "xiatiandenixi",</div><div class="line">  "license": "MIT",</div><div class="line">  "bugs": &#123;</div><div class="line">    "url": "https://github.com/xiatiandenixi/npm-project/issues"</div><div class="line">  &#125;,</div><div class="line">  "homepage": "https://github.com/xiatiandenixi/npm-project#readme"</div><div class="line">&#125;</div></pre></td></tr></table></figure></p>
+<p>接下来就是愉快的码代码时间….</p>
+<h3 id="发布"><a href="#发布" class="headerlink" title="发布"></a>发布</h3><figure class="highlight python"><table><tr><td class="gutter"><pre><div class="line">1</div></pre></td><td class="code"><pre><div class="line">npm publish</div></pre></td></tr></table></figure>
+          
+        
+      
+    </div>
+
+    <div>
+      
+    </div>
+
+    <div>
+      
+    </div>
+
+    <div>
+      
+    </div>
+
+    <footer class="post-footer">
+      
+
+      
+
+      
+
+      
+      
+        <div class="post-eof"></div>
+      
+    </footer>
+  </article>
+
+
+    
+      
+
+  
+
+  
+  
+  
+
+  <article class="post post-type-normal " itemscope itemtype="http://schema.org/Article">
+    <link itemprop="mainEntityOfPage" href="http://yoursite.com/2017/04/06/component-library/">
+
+    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
+      <meta itemprop="name" content="Corleone">
+      <meta itemprop="description" content="">
+      <meta itemprop="image" content="/images/headimg.jpg">
+    </span>
+
+    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
+      <meta itemprop="name" content="CorleoneX1n">
+    </span>
+
+    
+      <header class="post-header">
+
+        
+        
+          <h1 class="post-title" itemprop="name headline">
+            
+            
+              
+                
+                <a class="post-title-link" href="/2017/04/06/component-library/" itemprop="url">
+                  组件库设计实战
+                </a>
+              
+            
+          </h1>
+        
+
+        <div class="post-meta">
+          <span class="post-time">
+            
+              <span class="post-meta-item-icon">
+                <i class="fa fa-calendar-o"></i>
+              </span>
+              
+                <span class="post-meta-item-text">发表于</span>
+              
+              <time title="创建于" itemprop="dateCreated datePublished" datetime="2017-04-06T00:00:00+08:00">
+                2017-04-06
+              </time>
+            
+
+            
+
+            
+          </span>
+
+          
+
+          
+            
+          
+
+          
+          
+
+          
+
+          
+
+          
+
+        </div>
+      </header>
+    
+
+
+    <div class="post-body" itemprop="articleBody">
+
+      
+      
+
+      
+        
+          
+            <h1 id="组件库设计实战"><a href="#组件库设计实战" class="headerlink" title="组件库设计实战"></a>组件库设计实战</h1><h3 id="组件分类"><a href="#组件分类" class="headerlink" title="组件分类"></a>组件分类</h3><ul>
+<li>组件类</li>
+<li>控件类</li>
+</ul>
+<p>代码写法代表组件类型：</p>
+<ul>
+<li>不含有内部状态的以纯函数写法表示的无交互的纯渲染组件</li>
+<li>含有内部状态以 ES6 class 写法表示的有交互的智能控件</li>
+</ul>
+<p>所以我们新增一个组件的时候，可以从组件是否含有内部状态、是否有交互等几个方面来将其归入组件或控件，并以此来确认其相应的代码规范。</p>
+<p>延伸来说，除了基础的组件与控件的分别之外，我们还推荐大家从业务的角度出发再划分出一种组件类型，叫做容器。</p>
+<p>卡片本身应当是一个纯渲染组件，但在我们代入具体的业务场景后就会发现，卡片本身其实是有状态的，最常见的如数据加载中、数据为空、数据错误等。这样一个无交互但含有自身状态的组件无论归于上述的哪个分类都会让人感到奇怪，所以我们又引入了容器这样一个新的分类，专门用来存放卡片这类组件。</p>
+<h3 id="文档管理"><a href="#文档管理" class="headerlink" title="文档管理"></a>文档管理</h3><p>编写组件库本身并不是我们的最终目的，让更多的人在业务开发中使用起来才是，所以一个组件库的文档是否足够清晰、完善，也是决定一个组件库成败的关键。</p>
+<p>什么样的文档是好的？我想它起码应该达到以下两个要求：</p>
+<ul>
+<li>属性全覆盖<ul>
+<li>属性名、具体描述、数据类型、是否有默认值、是否必须等</li>
+</ul>
+</li>
+<li>示例丰富</li>
+</ul>
+<p>属性全覆盖的重要性在这里就不赘述了，因为使用者在不阅读源码的前提下想要了解组件的所有功能，除了阅读组件文档外就没有其他的方法了，大部分的组件库也都可以做到这一点，但示例丰富，就是体现组件库开发者良心之处的地方了。</p>
+
+          
+        
+      
+    </div>
+
+    <div>
+      
+    </div>
+
+    <div>
+      
+    </div>
+
+    <div>
+      
+    </div>
+
+    <footer class="post-footer">
+      
+
+      
+
+      
+
+      
+      
+        <div class="post-eof"></div>
+      
+    </footer>
+  </article>
+
+
+    
+      
+
+  
+
+  
+  
+  
+
+  <article class="post post-type-normal " itemscope itemtype="http://schema.org/Article">
     <link itemprop="mainEntityOfPage" href="http://yoursite.com/2017/04/05/test/">
 
     <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
@@ -585,7 +854,7 @@
           
             <div class="site-state-item site-state-posts">
               <a href="/archives">
-                <span class="site-state-item-count">2</span>
+                <span class="site-state-item-count">4</span>
                 <span class="site-state-item-name">日志</span>
               </a>
             </div>
